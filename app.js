@@ -30,7 +30,6 @@ db.connect()
   .then((obj) => {
     console.log("connected");
     sco = obj;
-    // return sco.any("SELECT * FROM Courses LIMIT 5");
   })
   .then((data) => {
     console.log(data);
