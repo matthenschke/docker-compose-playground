@@ -1,0 +1,4 @@
+node_modules
+pgdata
+.env
+wait-for-it.sh

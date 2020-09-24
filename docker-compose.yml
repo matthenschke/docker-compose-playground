@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "db"
+    environment:
+      DB_HOST: db
+    command: ["./wait-for-it.sh", "db:5432", "--", "node", "app.js"]
+
+  db:
+    image: postgres:10.4
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: ""
+      POSTGRES_DB: "sample"
+volumes:
+  pgdata:
+    driver: local
